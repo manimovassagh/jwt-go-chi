@@ -16,7 +16,7 @@ import (
 
 func main() {
 	cfg := models.Config{
-		JWTSecret: "your_Sample_jwt_secret_key_that_should_be_very_secret__!!", // Replace with your secret key
+		JWTSecret: "your_Sample_jwt_secret_key_that_should_be_very_secret__!!", // Replace with your secret key (not in production :)  and in that case you have to get it from env file or secrets)
 	}
 
 	dsn := "user:pass@tcp(127.0.0.1:3306)/db?charset=utf8mb4&parseTime=True&loc=Local"
