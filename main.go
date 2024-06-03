@@ -42,14 +42,7 @@ func main() {
 	r.Post("/signup", handlers.Signup(db))
 
 	// Protected route example
-	r.With(secure.VerifyJWT(cfg.JWTSecret)).Get("/protected", func(w http.ResponseWriter, r *http.Request) {
-		email, name, ok := secure.GetUserFromContext(r.Context())
-		if !ok {
-			http.Error(w, "User not found in context", http.StatusInternalServerError)
-			return
-		}
-		w.Write([]byte(fmt.Sprintf("This is a protected route. Hello, %s (%s)!", name, email)))
-	})
+	r.With(secure.VerifyJWT(cfg.JWTSecret)).Get("/protected", handlers.ProtectedHandler)
 
 	log.Println("Server is running on port 3000")
 	http.ListenAndServe(":3000", r)
