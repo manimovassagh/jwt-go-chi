@@ -13,5 +13,6 @@ func ProtectedHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "User not found in context", http.StatusInternalServerError)
 		return
 	}
+	fmt.Println(email, name, ok)
 	w.Write([]byte(fmt.Sprintf("This is a protected route. Hello, %s (%s)!", name, email)))
 }
